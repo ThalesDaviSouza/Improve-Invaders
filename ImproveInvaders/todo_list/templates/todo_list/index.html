@@ -1,0 +1,10 @@
+{% extends 'todo_list/layout.html' %}
+
+{% block body %}
+    <h1>Home</h1>
+    {{user}}
+    {% if message %}
+        <p>{{message}}</p>
+    {% endif %}
+    <a href="{% url 'logout' %}">Sair da conta</a>
+{% endblock %}

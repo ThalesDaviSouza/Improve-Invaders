@@ -1,0 +1,16 @@
+{% extends 'todo_list/layout.html' %}
+
+{% block body %}
+    <h1>Login</h1>
+    {% if warning %}
+        <p>{{warning}}</p>
+    {% endif%}
+    <form action="{% url 'login' %}" method="POST">
+        {% csrf_token %}
+        <input type="text" placeholder="Usuário" name="username"><br>
+        <input type="password" placeholder="Senha" name="password"><br>
+        <input type="submit" value="Logar">
+    </form>
+    <h2>Primeira vez?</h2>
+    <a href="{% url 'cadastro' %}">Logar</a>
+{% endblock %}
