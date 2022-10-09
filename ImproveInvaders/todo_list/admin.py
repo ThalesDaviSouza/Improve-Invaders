@@ -1,5 +1,5 @@
 from django.contrib import admin
-from todo_list.models import UserType
+from .models import UserType, Sala, Task, StudentWork
 from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin
 
@@ -18,3 +18,7 @@ class CustomizeUserAdmin (UserAdmin):
 
 admin.site.unregister(User)
 admin.site.register(User, CustomizeUserAdmin)
+admin.site.register(Sala)
+admin.site.register(Task)
+admin.site.register(StudentWork)
+
