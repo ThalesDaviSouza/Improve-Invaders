@@ -1,0 +1,30 @@
+{% extends 'todo_list/layout.html' %}
+{% load i18n %}
+
+
+{% block body %}
+    {% for task in tasks %}
+        {% language 'pt-BR' %}
+            <input type="checkbox" data-url="{% url 'send-task' task.id %}" name="{{task.id}}" value="{{task.id}}" >
+            <label>{{task}} - {{task.dataEntrega|date:"j F, Y"}}</label><br>
+        {% endlanguage %}
+    {% endfor %}
+    {% for task in done %}
+        <input type="checkbox" data-url="{% url 'send-task' task.id %}" name="{{task.id}}" value="{{task.id}}" checked>
+        <label>{{task}} - {{task.dataEntrega|date:"j F, Y"}}</label><br>
+    {% endfor %}
+    
+    
+{% endblock %}
+
+{% block script %}
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('input').forEach(function(input){
+                input.onclick = function(){
+                    window.location.replace(input.dataset.url)
+                }
+            })
+        })
+    </script>
+{% endblock %}

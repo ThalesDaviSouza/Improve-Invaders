@@ -1,0 +1,40 @@
+{% extends 'todo_list/layout.html' %}
+{% load static %}
+
+
+{% block body %}
+    {% if user_type == "ESTUDANTE" %}
+    <div class="main">
+        <section class="container">
+            <div class="sidenav">
+                <a href="{% url 'todo' %}">
+                <img src="{% static 'todo_list/animation/index/LogoAllBlack.svg' %}" alt="Logo so site">
+                    <h2>GO TASKS</h2>
+                    
+                    <p>
+                        venha conferir todas as tarefas que você ainda deve concluir  
+                    </p>          
+                </a>
+            </div>      
+            <div class="item">
+            <img src="{% static 'todo_list/img/index/Alien Roxo.png' %}" alt="Img de um dos aliens do jogo">
+            <a href="#"><h2>SPACE INVADERS</h2></a>
+            
+            <p>
+                Clique e venha jogar o space invaders para coletar moedas que você poderá usar para trocar por recompensas exclusivas em nosso site          
+            </p>          
+            </div>      
+    
+            <div class="item">
+            <img src="{% static 'todo_list/img/index/store512.png' %}" alt="Logo da loja">
+            <a href="#"><h2>SHOP (Ainda falta fazer)</h2></a>
+            
+            <p>
+                Entre e troque seus pontos por avatares raros para o seu perfil ou por recompensas exclusivas ofertadas pelo seu professor
+            </p>  
+            </div>
+            <div class="footer"></div>
+        </section>
+    </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'todo_list/layout.html' %}
+
+{% block body %}
+    <h1>Criar Sala:</h1>
+    <form action="{% url 'create-room' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Criar Sala">
+    </form>
+
+
+{% endblock %}

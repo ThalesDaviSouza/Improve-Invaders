@@ -1,0 +1,205 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body *{
+    box-sizing: border-box; /*Para corrigir redimensionamento das bordas e suas posições nos vários tipos de aparelhos*/
+}
+
+nav{
+    align-items: center;
+    padding-top: 10px;
+    padding-right: 60px;
+    display: flex; /*Para logo e listas um do lado do outro*/
+    justify-content:flex-end; /*Espaço ao redor será metade do espaço entre eles*/
+    background: #0d162f;
+    height: 10vh; /*unidade expansível que se adapta a altura da janela de visualização do usuário. Por exemplo: 100vh cobre a janela inteira.*/
+}
+.logo {
+    margin-top: 4vh;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 5px; /*Espaçamento entre as letras*/
+    text-decoration: none;
+    color: #650bbf;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    transition: 0.2s;
+}
+.logo:hover{
+    filter: drop-shadow(0 0 25px #7c40ff);
+}
+
+/* Escuro #0d162f*/
+/* Claro #7c40ff*/
+/* logo 650bbf */
+
+.main-login{
+    /*o V = ViewPort. o W = Width. o H = Height*/
+    width: 100vw; /*ViewPort Width, é referente a % do tamanho da largura da sua ViewPort, que é básicamente a janela de visualização*/ 
+    height: 90vh;
+    background: #0d162f;
+    display: flex; /*Faz com que as coisas fiquem lado a lado dentro do site*/
+    justify-content: center; /* Justifica as coisas no eixo X. Valores:
+    * Flex-Start: Justifica as coisas a esquerda
+    * Flex-End: Justifica as coisas a direita
+    * Center: Fica tudo no centro
+    * Space-Between: Cria um espaço igual para todos os elementos
+    * Space-around: Igual o between porém cria espaços menores
+    */
+    align-items: center; /*Justifica as coisas no eixo Y.*/
+}
+
+.left-login{
+    width: 50vw;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /*Uma coisa fica em baixo da outra*/
+}
+
+.left-login > h1 { /*Chama elemento h1 dentro da class left-login. Configurações são associadas para todos os h1 que existem nela.*/
+    font-size: 3vw;
+    color: #7c40ff;
+}
+
+.left-login h1 span{
+    opacity: 50%;
+    font-size: 2vw;
+    color: white;
+    padding: 4px;
+    text-transform: uppercase;
+    background: #7c40ff;
+    border-radius: 30px;
+    transition: 0.3s;
+}
+
+.left-login h1 span:hover{
+    opacity: 100%;
+    font-size: 2vw;
+    color: white;
+    padding: 4px;
+    text-transform: uppercase;
+    background: #7c40ff;
+    border-radius: 30px;
+    box-shadow: 0px 10px 40px -12px #7c40ff;
+}
+
+.left-login-image{
+    width: 30vw;
+    filter: drop-shadow(0 0 15px #7c40ff);
+}
+
+.right-login{
+    width: 50vw;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-login{
+    width: 60%; /*Pega a % do tamanho da div que está o card-login, no caso é a right-login, ou seja, pega 60% do tamanho da right-login, ou seja, pega 60% de 50vw*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 35px; /*Espaçamento interno. O primeiro se refere ao eixo X e o segundo ao eixo Y*/
+    background: #4a2b8f; /*Cor de fundo do cartão de login*/
+    border-radius: 20px; /*Deixar a vorda mais redondinha*/
+    box-shadow: 0px 10px 40px 00000056; /*O primeiro se refere a sombra ir para a esquerda ou direita. O segundo valor se refere a sombra ir para cima ou para baixo. O terceiro se refere ao blur. O quarto é a cor*/
+}
+
+.card-login > h1{
+    color: #7c40ff;
+    font-weight: 800; /*Grossura da fonte*/
+}
+
+.textField{ /*Class que engloba label e input e serve para organizar o label e o input um embaixo do outro, do ladinho*/
+    width: 100%; /*Para cobrir 100% do card*/
+    display: flex;
+    flex-direction: column; /*O flex-direction faz com que o aling-itens e o justify-content se invertem, o X vira Y e o Y vira X*/
+    align-items: flex-start; /*Se referia ao eixo Y, agora se refere ao eixo Y*/
+    justify-content: center;
+    margin: 10px 0px;
+}
+
+.textField > input{
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    background: #212b38;
+    color: white;
+    font-size: 12pt; /*PT é a mesma unidade de medida dusada nos editores de texto tradicionais*/
+    box-shadow: 0px 10px 40px 00000056;
+    outline: none;
+    box-sizing: border-box; /*Cria um colisão entre a div filho e a div pai*/
+}
+
+.textField > label{
+    color: white;
+    margin-bottom: 10px;
+}
+
+.textField > input::placeholder{
+    color: #f0ffff94;
+}
+
+.btn-Login{
+    width: 100%;
+    padding: 16px 0px;
+    margin: 25px;
+    border: none;
+    border-radius: 8px;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #37465b;
+    background: #7c40ff;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-Login:hover{
+    box-shadow: 0px 10px 40px -12px #7c40ff;
+}
+
+
+/*Enquanto for uma tela com esa largura, adcionará os elementos que eu colocar nela*/
+@media only screen and (max-width: 950px){
+    .card-login{
+        width: 85%;
+    }
+}
+
+@media only screen and (max-width: 600px){ /*Confirgurações de redimensionamento para celular*/
+    .main-login{
+        flex-direction: column; /*Os itens dentro da main ficam em vertical no celular*/
+    }
+    .left-login > h1{
+        display: none; /*Exclui o h1 quando estiver no celular*/
+    }
+    .left-login{
+        width: 100%; /*Ocupa 100% da largura da tela*/
+        height: auto;
+    }
+    .right-login{
+        width: 100%; /*Ocupa 100% da largura da tela*/
+        height: auto;
+    }
+
+    .left-login-image{
+        width: 50vh;
+    }
+
+    .card-login{
+        width: 90%;
+    }
+}
