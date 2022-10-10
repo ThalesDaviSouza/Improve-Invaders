@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .models import UserType, Sala, Task, StudentWork, EnrolledCourses
-from .forms import UserTypeForm, SalaForm, TaskForm
+from .forms import UserTypeForm, SalaForm, TaskForm, StudentWorkForm
 import datetime
 
 # Create your views here.
@@ -42,6 +42,10 @@ def home(request):
     return render(request, "todo_list/index.html", {
         "user_type":userType,
     })
+
+def sobre(request):
+    return render(request, "todo_list/sobre.html", {})
+
 
 # Paginas sobre salas
 
@@ -85,6 +89,29 @@ def delete_room(request, room_id):
 
     room.delete()
     return redirect('home')
+
+def list_room(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+    
+    userType = UserType.objects.get(user=request.user)
+    userType = userType.userType
+
+    if userType == "PROFESSOR":
+        rooms = Sala.objects.filter(professor=request.user)
+        return render(request, "todo_list/list_room.html", {
+            'user_type':userType,
+            'rooms':rooms,
+        })
+    
+    if userType == "ESTUDANTE":
+        rooms = EnrolledCourses.objects.get(student=request.user)
+        rooms = rooms.courses.all()
+        return render(request, "todo_list/list_room.html", {
+            'user_type':userType,
+            'rooms':rooms,
+        })
+    
 
 # Tasks
 
@@ -149,6 +176,68 @@ def search_room(request):
     return redirect('home')
         
 
+def todo(request):
+    userType = UserType.objects.get(user=request.user)
+    userType = userType.userType
+    if not request.user.is_authenticated or userType != "ESTUDANTE":
+        return redirect('login')
+
+    courses = EnrolledCourses.objects.get(student = request.user)
+    courses = courses.courses.all()
+    tasks = []
+    for course in courses:
+        courseTasks = Task.objects.filter(sala=course)
+        for task in courseTasks:
+            tasks.append(task)
+
+    studentWorks = StudentWork.objects.filter(student=request.user)
+    tasksDone = []
+    for task in studentWorks:
+        tasksDone.append(task.task)
+
+    remover = []
+    for task in tasks:
+        for taskDone in tasksDone:
+            if task == taskDone:
+                remover.append(task)
+    
+    for task in remover:
+        tasks.remove(task)
+
+    tasks.sort(key=lambda x : x.dataEntrega)
+    
+    return render(request, 'todo_list/tasks.html', {
+        'tasks':tasks,
+        'done':tasksDone,
+    })
+
+
+
+def send_task(request, task_id):
+    userType = UserType.objects.get(user=request.user)
+    userType = userType.userType
+    if not request.user.is_authenticated or userType != "ESTUDANTE":
+        return redirect('login')
+
+    task = Task.objects.get(pk=task_id)
+    if not task:
+        return redirect('home')
+
+    form = StudentWorkForm
+
+    if request.method == "POST":
+        form = StudentWorkForm(request.POST)
+        if form.is_valid():
+            studentWork = form.save(commit=False)
+            studentWork.student = request.user
+            studentWork.task = task
+            studentWork.save()
+            return redirect('home')
+
+    return render(request, 'todo_list/send_task.html', {
+        'task':task,
+        'form':form,
+    })
 
 
 # Pefil do usuario

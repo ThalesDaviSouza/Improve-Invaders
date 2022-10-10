@@ -3,31 +3,9 @@
 {% block body %}
     <h1>Home</h1>
     {{user}}<br>
-    {% if user_type == "PROFESSOR" %}
-        {% for sala in salas %}
-            <a href="{% url 'view-room' sala.id %}">{{sala}}</a><br><br>
-        {% empty %}
-            <p>Sem salas no momento</p>
-        {% endfor %}
-
-        <a href="{% url 'create-room' %}">Criar mais salas</a>
-
-    {% endif %}
-
+    <a href="{% url 'list-room' %}">Salas</a><br><br>
     {% if user_type == "ESTUDANTE" %}
-        <p>ESTUDANTE</p>
-        <p>Salas:</p>
-        {% for sala in salas %}
-            <a href="{% url 'view-room' sala.id %}">{{ sala }}</a>
-        {%empty%}
-            <p>Você não está matriculado em nenhuma sala ainda.</p>
-        {% endfor %}
-        <form action="{% url 'search-room' %}" method="POST">
-            {% csrf_token %}
-            <label>Entrar em uma sala:</label>
-            <input type="text" placeholder="Código da sala" name="room_id">
-            <input type="submit" value="Entrar na sala">
-        </form>
+        <a href="{% url 'todo' %}">Go Tasks</a>
     {% endif %}
 
     {% if message %}

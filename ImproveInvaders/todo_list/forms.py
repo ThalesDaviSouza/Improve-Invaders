@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import UserType, Sala, Task
+from .models import UserType, Sala, Task, StudentWork
 
 
 class UserTypeForm(ModelForm):
@@ -47,4 +47,11 @@ class TaskForm(ModelForm):
         }
 
 
+class StudentWorkForm(ModelForm):
+    class Meta:
+        model = StudentWork
+        fields = ['content']
 
+        labels = {
+            'content': 'Sua tarefa feita',
+        }
