@@ -1,7 +1,12 @@
 {% extends 'todo_list/layout.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'todo_list/css/login.css' %}">
+{% endblock %}
 
 {% block body %}
-    <h1>Login</h1>
+    <!-- <h1>Login</h1>
     {% if warning %}
         <p>{{warning}}</p>
     {% endif%}
@@ -12,5 +17,50 @@
         <input type="submit" value="Logar">
     </form>
     <h2>Primeira vez?</h2>
-    <a href="{% url 'cadastro' %}">Logar</a>
+    <a href="{% url 'cadastro' %}">Logar</a> -->
+
+    <!-- <header>         -->
+        <!-- <nav> -->
+            <!--Referencias de hipertexto serão serão a próxpria raiz do documento-->
+            <!-- <h1 class="logo">Improve Invaders</h1> -->
+        <!-- </nav>
+    </header> -->
+    <div class="main-login">
+        <div class="left-login">
+            <h1>Entre e de <br>um UP nos seus <span> Estudos </span></h1>
+            <img src="{% static 'todo_list/animation/index/JOURNEY.svg' %}" class="left-login-image" alt="Animação de Aula">
+        </div>
+        <div class="right-login">
+            <div class="card-login">
+                <!-- <h1>Login</h1> 
+                <div class="textField">
+                    <label for="usuario">Usuário</label> 
+                    <input type="text" name="usuario" placeholder="username"> 
+                </div>
+                <div class="textField">
+                    <label for="senha">Senha</label> 
+                    <input type="password" name="senha" placeholder="senha"> 
+                </div>
+                
+                    <a href="{% url 'home' %}"> 
+                        <button class="btn-Login">Login</button> 
+                    </a>                 -->
+                <form action="{% url 'login' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="textField">
+                        <label for="usuario">Usuário</label> 
+                        <input type="text" placeholder="Usuário" name="username"><br>
+                    </div>
+                    <div class="textField">
+                        <label for="senha">Senha</label> 
+                        <input type="password" placeholder="Senha" name="password"><br>
+                    </div>
+                    <div id="login">
+                        <input class="btn-Login" type="submit" value="Logar">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

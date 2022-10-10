@@ -11,7 +11,7 @@ class UserType(models.Model):
             ("PROFESSOR", "Professor")],
         blank=True,
         null=True)
-
+    spacesCoins = models.IntegerField(default=0)
 
     def __str__(self):
         return self.user.username
@@ -30,6 +30,7 @@ class Task(models.Model):
     sala = models.ForeignKey(Sala, on_delete=models.CASCADE)
     name = models.CharField(max_length=64)
     description = models.TextField()
+    value = models.IntegerField(default=0)
     dataUpload = models.DateField(null=True)
     dataEntrega = models.DateField(null=True)
 
