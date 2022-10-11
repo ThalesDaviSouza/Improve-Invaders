@@ -1,0 +1,167 @@
+{% extends 'todo_list/layout.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="{% static 'todo_list/css/store.css' %}">
+<script src="{% static 'todo_list/js/store.js' %}" defer></script>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h3 class="title"> PRODUTOS INTERESTELARES </h3><br>        
+
+    <div class="products-container">
+        <div class="product" data-name="p-1">
+            <img src="{% static 'todo_list/img/index/Alien Roxo.png' %}" alt="">
+            <h3>Alien Roxo</h3>
+            <div class="price">$5.00</div>
+        </div>
+        <div class="product" data-name="p-2">
+            <img src="{% static 'todo_list/img/index/monitor.png' %}" alt="">
+            <h3>Monitoria</h3>
+            <div class="price">$5.00</div>
+        </div><div class="product" data-name="p-3">
+            <img src="{% static 'todo_list/img/index/Alien Amarelo.png' %}" alt="">
+            <h3>Alien Amarelo</h3>
+            <div class="price">$5.00</div>
+        </div>
+        <div class="product" data-name="p-4">
+            <img src="{% static 'todo_list/img/index/wall-clock.png' %}" alt="">
+            <h3>Atividades Extendidas</h3>
+            <div class="price">$5.00</div>
+        </div>
+        <div class="product" data-name="p-5">
+            <img src="{% static 'todo_list/img/index/Alien Azul.png' %}" alt="">
+            <h3>Alien Azul</h3>
+            <div class="price">$5.00</div>
+        </div>
+        <div class="product" data-name="p-6">
+            <img src="{% static 'todo_list/img/index/Alien Verde.png' %}" alt="">
+            <h3>Alien Verde</h3>
+            <div class="price">$5.00</div>
+        </div>
+    </div>
+    
+
+</div>
+
+<div class="products-preview">
+    <div class="preview" data-target="p-1">
+        <i class="fas fa-times"></i>
+        <img src="{% static 'todo_list/img/index/Alien Roxo.png' %}" alt="">
+        <h3>Alien Roxo</h3>
+        <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+            <span>( 250 )</span>
+        </div>
+        <p>Este item é um alien roxo</p>
+        <div class="price">$5.00</div>
+        <div class="buttons">
+            <a href="#" class="buy">Comprar</a>
+            <a href="#" class="cart">Add ao carrinho</a>
+        </div>
+    </div>
+    <div class="preview" data-target="p-2">
+        <i class="fas fa-times"></i>
+        <img src="{% static 'todo_list/img/index/monitor.png' %}" alt="">
+        <h3>Monitoria</h3>
+        <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+            <span>( 250 )</span>
+        </div>
+        <p>Este item é uma monitoria extra</p>
+        <div class="price">$5.00</div>
+        <div class="buttons">
+            <a href="#" class="buy">Comprar</a>
+            <a href="#" class="cart">Add ao carrinho</a>
+        </div>
+    </div>
+    <div class="preview" data-target="p-3">
+        <i class="fas fa-times"></i>
+        <img src="{% static 'todo_list/img/index/Alien Amarelo.png' %}" alt="">
+        <h3>Alien Amarelo</h3>
+        <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+            <span>( 250 )</span>
+        </div>
+        <p>Este item é um alien amarelo</p>
+        <div class="price">$5.00</div>
+        <div class="buttons">
+            <a href="#" class="buy">Comprar</a>
+            <a href="#" class="cart">Add ao carrinho</a>
+        </div>
+    </div>
+    <div class="preview" data-target="p-4">
+        <i class="fas fa-times"></i>
+        <img src="{% static 'todo_list/img/index/wall-clock.png' %}" alt="">
+        <h3>Tempo Extra</h3>
+        <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+            <span>( 250 )</span>
+        </div>
+        <p>Este item serve para enviar atividades atrasadas sem perder pontos</p>
+        <div class="price">$5.00</div>
+        <div class="buttons">
+            <a href="#" class="buy">Comprar</a>
+            <a href="#" class="cart">Add ao carrinho</a>
+        </div>
+    </div>
+    <div class="preview" data-target="p-5">
+        <i class="fas fa-times"></i>
+        <img src="{% static 'todo_list/img/index/Alien Azul.png' %}" alt="">
+        <h3>Alien Azul</h3>
+        <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+            <span>( 250 )</span>
+        </div>
+        <p>Este item é um alien azul</p>
+        <div class="price">$5.00</div>
+        <div class="buttons">
+            <a href="#" class="buy">Comprar</a>
+            <a href="#" class="cart">Add ao carrinho</a>
+        </div>
+    </div>
+    <div class="preview" data-target="p-6">
+        <i class="fas fa-times"></i>
+        <img src="{% static 'todo_list/img/index/Alien Verde.png' %}" alt="">
+        <h3>Alien Verde</h3>
+        <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+            <span>( 250 )</span>
+        </div>
+        <p>Este item é um alien verde</p>
+        <div class="price">$5.00</div>
+        <div class="buttons">
+            <a href="#" class="buy">Comprar</a>
+            <a href="#" class="cart">Add ao carrinho</a>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

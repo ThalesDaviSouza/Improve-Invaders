@@ -1,22 +1,35 @@
-{% extends 'todo_list/layout.html' %}
+{% extends 'todo_list/login.html' %}
 
 {% block body %}
-    <h1>Cadastro</h1>
-    {% if message %}
-        <p>{{message}}</p>
-    {%endif%}
-    {% if sucess_message %}
-        <p>{{sucess_message}}</p>
-        <a href="{% url 'login' %}">Logar</a>
-    {% else %}
-        <form action="{% url 'cadastro' %}" method="POST">
-            {% csrf_token %}
-            <input type="text" placeholder="Usuário" name="usuario"><br>
-            <input type="email" placeholder="email" name="email"><br>
-            <input type="password" placeholder="Senha" name="senha"><br>
-            <input type="password" placeholder="Confirme a senha" name="senha_confirm"><br>
-            {{ form.as_p }}
-            <input type="submit" value="Cadastrar"><br>
-        </form>
-    {% endif %}
+    <div class="right-login">
+        <div class="card-login">
+            {% if message %}
+                <p>{{message}}</p>
+            {%endif%}
+            {% if sucess_message %}
+                <p>{{sucess_message}}</p>
+                <a href="{% url 'login' %}">Logar</a>
+            {% else %}
+                <form action="{% url 'cadastro' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="textField">
+                        <input type="text" placeholder="Usuário" name="usuario"><br>
+                    </div>
+                    <div class="textField">
+                        <input type="email" placeholder="email" name="email"><br>
+                    </div>
+                    <div class="textField">
+                        <input type="password" placeholder="Senha" name="senha"><br>
+                    </div>
+                    <div class="textField">
+                        <input type="password" placeholder="Confirme a senha" name="senha_confirm"><br>
+                    </div>
+                    <div class="sobre">
+                        {{ form.as_p }}
+                    </div>
+                    <input class="btn-Login" type="submit" value="Cadastrar"><br>
+                </form>
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}

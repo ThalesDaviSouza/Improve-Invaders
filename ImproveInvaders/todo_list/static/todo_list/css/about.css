@@ -23,7 +23,6 @@ header {
     align-items: center;
     padding: 30px 10%;
     background-color: #0d162f;
-    filter: drop-shadow(0 0 25px rgba(150, 3, 255, 0.301)) drop-shadow(0 0 15px rgb(255, 255, 255, 0.5));
 }
 
 .logo{
@@ -65,3 +64,61 @@ button:hover {
 
 
 /*-----------------------------------------------*/
+
+
+
+section{
+    width: 100%;
+    height: 90vh;
+    display: grid;
+    place-items: center;
+    background-color: #650BBF;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+section h1{    
+    position: relative;
+    font-size: 104px;
+    top: 30%;
+    color: rgba(255,255,255,0.1);
+    transition: 0.3s;
+}
+section h1:hover{
+    filter: drop-shadow(0 0 25px rgba(150, 3, 255, 0.301)) drop-shadow(0 0 15px rgb(255, 255, 255, 0.25));
+}
+
+section h1:before{
+    content: attr(titulo);
+    font-size: 64px;
+    color: #15234d;
+    position: absolute;
+    top: 50%;
+    left: 35%;    
+    transform: translate(-30%,-40%);
+    
+}
+
+section p{
+    width: 68vw;
+    height: 10vh;
+    line-height: 20px;
+    font-size: 17px;
+    font-weight: 100;
+    text-align: justify;
+    transition: 0.3s;
+}
+
+section p:hover{
+    filter: drop-shadow(0 0 25px rgba(150, 3, 255, 0.301)) drop-shadow(0 0 15px rgb(255, 255, 255, 0.1));
+}
+
+@media screen and (max-width: 764px){
+
+    section h1:before{
+        font-size: 44px;
+    }
+    section h1{    
+        font-size: 74px;
+    }
+        
+}

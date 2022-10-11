@@ -21,13 +21,7 @@ def home(request):
     userType = userType.userType
 
     if userType == "PROFESSOR":
-        salas = Sala.objects.filter(professor=request.user)
-
-        return render(request, "todo_list/index.html", {
-            "message":"É um professor logado",
-            "user_type":userType,
-            "salas":salas
-        })
+        return redirect('class-tasks')
     
     if userType == "ESTUDANTE":
         salas = EnrolledCourses.objects.get(student=request.user)
@@ -44,7 +38,10 @@ def home(request):
     })
 
 def sobre(request):
-    return render(request, "todo_list/sobre.html", {})
+    if request.user.is_authenticated:
+        return render(request, "todo_list/sobre.html", {})
+    
+    return render(request, 'todo_list/sobre_logout.html', {})
 
 
 # Paginas sobre salas
@@ -73,12 +70,17 @@ def view_room(request, room_id):
     if not request.user.is_authenticated:
         return redirect('login')
 
+    userType = UserType.objects.get(user=request.user)
+    userType = userType.userType
     sala = Sala.objects.get(pk=room_id)
     tasks = Task.objects.all().filter(sala=sala)
     return render(request, 'todo_list/view_room.html', {
         "sala":sala,
         "tasks":tasks,
+        'userType':userType,
     })
+
+
 
 def delete_room(request, room_id):
     room = Sala.objects.get(pk=room_id)
@@ -175,6 +177,17 @@ def search_room(request):
 
     return redirect('home')
         
+def class_tasks(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+
+    userType = UserType.objects.filter(user=request.user).first()
+    userType = userType.userType
+
+    return render(request, 'todo_list/class_tasks.html', {
+        'userType':userType,
+    })
+    
 
 def todo(request):
     userType = UserType.objects.get(user=request.user)
@@ -238,6 +251,18 @@ def send_task(request, task_id):
         'task':task,
         'form':form,
     })
+
+
+# Shop
+
+def shop(request):
+    userType = UserType.objects.get(user=request.user)
+    userType = userType.userType
+    if not request.user.is_authenticated or userType != "ESTUDANTE":
+        return redirect('home')
+
+    return render(request, 'todo_list/shop.html', {})
+
 
 
 # Pefil do usuario

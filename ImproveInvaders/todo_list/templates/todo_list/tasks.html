@@ -1,30 +1,42 @@
 {% extends 'todo_list/layout.html' %}
 {% load i18n %}
+{% load static %}
 
 
-{% block body %}
-    {% for task in tasks %}
-        {% language 'pt-BR' %}
-            <input type="checkbox" data-url="{% url 'send-task' task.id %}" name="{{task.id}}" value="{{task.id}}" >
-            <label>{{task}} - {{task.dataEntrega|date:"j F, Y"}}</label><br>
-        {% endlanguage %}
-    {% endfor %}
-    {% for task in done %}
-        <input type="checkbox" data-url="{% url 'send-task' task.id %}" name="{{task.id}}" value="{{task.id}}" checked>
-        <label>{{task}} - {{task.dataEntrega|date:"j F, Y"}}</label><br>
-    {% endfor %}
-    
-    
+{% block head %}
+<link rel="stylesheet" href="{% static 'todo_list/css/studentsTasks.css' %}">
+<script src="{% static 'todo_list/js/studentsTasks.js' %}" defer></script>
+<script src="https://kit.fontawesome.com/7872dcc455.js" defer></script>
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans:wght@700&display=swap"
+  rel="stylesheet" />
 {% endblock %}
 
-{% block script %}
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('input').forEach(function(input){
-                input.onclick = function(){
-                    window.location.replace(input.dataset.url)
-                }
-            })
-        })
-    </script>
+{% block body %}
+    <div class="container">
+        <header class="todo-title">
+          <h1 class="title"><i class="fas fa-check"></i>    Tarefas</h1>              
+        </header><br>
+        <main class="todo-list">
+          <ul id="todoList">
+            {% language 'pt-BR' %}
+            {% for task in tasks %}
+                <li>
+                    <a href="{% url 'send-task' task.id %}">{{task}} -- {{task.dataEntrega|date:"j F, Y"}}</a>
+                </li>
+            {% endfor %}
+            {% if done %}
+                <h1>Feito:</h1>
+            {% endif %}
+            {% for task in done %}
+                <li>
+                    <a href="{% url 'view-task' task.id %}">{{task}} -- {{task.dataEntrega|date:"j F, Y"}}</a>
+                </li>
+            {% endfor %}
+            {% endlanguage %}
+          </ul>
+        </main>
+      </div>
+      <script src="https://kit.fontawesome.com/7872dcc455.js" defer></script>
+    
 {% endblock %}

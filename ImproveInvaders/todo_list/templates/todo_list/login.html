@@ -1,50 +1,35 @@
-{% extends 'todo_list/layout.html' %}
 {% load static %}
 
-{% block head %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Improve Invaders</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'todo_list/css/login.css' %}">
-{% endblock %}
+</head>
 
-{% block body %}
-    <!-- <h1>Login</h1>
-    {% if warning %}
-        <p>{{warning}}</p>
-    {% endif%}
-    <form action="{% url 'login' %}" method="POST">
-        {% csrf_token %}
-        <input type="text" placeholder="Usuário" name="username"><br>
-        <input type="password" placeholder="Senha" name="password"><br>
-        <input type="submit" value="Logar">
-    </form>
-    <h2>Primeira vez?</h2>
-    <a href="{% url 'cadastro' %}">Logar</a> -->
-
-    <!-- <header>         -->
-        <!-- <nav> -->
+<body> <!--Teremos um div main e uma div na esquerda para título e imagem e do lado direito para colocar o formulario-->
+    <header>        
+        <nav>
             <!--Referencias de hipertexto serão serão a próxpria raiz do documento-->
-            <!-- <h1 class="logo">Improve Invaders</h1> -->
-        <!-- </nav>
-    </header> -->
+            {% block logo %}
+            <a class="sobre" href="{% url 'sobre' %}">
+                <h1 class="logo">Improve Invaders</h1>
+            </a>
+            {% endblock %}
+        </nav>
+    </header>
     <div class="main-login">
         <div class="left-login">
             <h1>Entre e de <br>um UP nos seus <span> Estudos </span></h1>
             <img src="{% static 'todo_list/animation/index/JOURNEY.svg' %}" class="left-login-image" alt="Animação de Aula">
         </div>
+        {% block body %}
         <div class="right-login">
             <div class="card-login">
-                <!-- <h1>Login</h1> 
-                <div class="textField">
-                    <label for="usuario">Usuário</label> 
-                    <input type="text" name="usuario" placeholder="username"> 
-                </div>
-                <div class="textField">
-                    <label for="senha">Senha</label> 
-                    <input type="password" name="senha" placeholder="senha"> 
-                </div>
-                
-                    <a href="{% url 'home' %}"> 
-                        <button class="btn-Login">Login</button> 
-                    </a>                 -->
+                <h1>Login</h1> <!--Título para o cartão de login-->
                 <form action="{% url 'login' %}" method="POST">
                     {% csrf_token %}
                     <div class="textField">
@@ -55,12 +40,18 @@
                         <label for="senha">Senha</label> 
                         <input type="password" placeholder="Senha" name="password"><br>
                     </div>
-                    <div id="login">
+                    <div>
                         <input class="btn-Login" type="submit" value="Logar">
                     </div>
-                </form>
+                </form>  
+                <h1>Primeira vez aqui?</h1>
+                <a class="sobre" href="{% url 'cadastro' %}"><p class="btn-Login">Cadastrar-se</p></a>
             </div>
         </div>
+        {% endblock %}
     </div>
+    
 
-{% endblock %}
+</body>
+
+</html>

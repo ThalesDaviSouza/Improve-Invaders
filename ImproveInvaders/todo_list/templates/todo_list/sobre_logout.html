@@ -1,22 +1,14 @@
-{% extends 'todo_list/layout.html' %}
+{% extends 'todo_list/login.html' %}
 
-{% block head %}
-<style>
-    body {
-        background-color: #650BBF;
-    }
-    #info {
-        color: white;
-        margin: 20px;
-        text-align: center;
-        font-size: 1.3rem;
-        margin: 2% 20%;
-    }
-</style>
-{%endblock%}
+{% block logo %}
+    <a class="sobre" href="{% url 'login' %}">
+        <h1 class="logo">Improve Invaders</h1>
+    </a>
+{% endblock %}
 
 {% block body %}
-    <div id="info">
+<div class="right-login">
+    <div class="card-login">
         <h1>Sobre</h1>
         <div class="sobre">
             <p>
@@ -27,5 +19,6 @@
             </p>
         </div>
     </div>
+</div>    
 
 {% endblock %}

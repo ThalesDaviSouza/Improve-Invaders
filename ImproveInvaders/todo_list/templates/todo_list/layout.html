@@ -5,10 +5,10 @@
     <head>
         <title>Improve invaders</title>
         <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="{% static 'todo_list/css/style.css' %}" rel="stylesheet">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
+        
         {% block head %}
         {% endblock %}
     </head>
@@ -23,16 +23,13 @@
                         <a href="{% url 'home' %}">Home</a>
                     </li>
                     <li>
-                        <a href="{% url 'todo' %}">Tasks</a>
+                        <a href="{% url 'class-tasks' %}">Salas|Tasks</a>
                     </li>
                     <li>
-                        <a href="{% url 'list-room' %}">Salas</a>
-                    </li>
-                    <li>
-                        <a href="#">Shop (FALTANDO)</a>
+                        <a href="{% url 'shop' %}">Shop</a>
                     </li>    
                     <li>
-                    <a href="#">Sobre (FALTANDO)</a>
+                    <a href="{% url 'sobre' %}">Sobre</a>
                 </li> 
                 </ul>
             </nav>

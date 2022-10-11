@@ -1,0 +1,48 @@
+{% extends 'todo_list/layout.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'todo_list/css/activities.css' %}">
+{% endblock %}
+
+
+{% block body %}
+<main class="cards">
+    {% if userType == 'ESTUDANTE' %}
+    <section class="card contact">
+        <div class="icon">
+            <img src="{% static 'todo_list/img/index/clipboard.png' %}" alt="Contact us.">
+        </div>
+        <h3>Ver Tarefas</h3>
+        <span>Veja aqui as suas tarefas e ganhe prêmios.</span>
+        <a href="{% url 'todo' %}">
+            <button class="b1">Abrir</button>
+        </a>            
+    </section>
+    {% else %}
+    <section class="card contact">
+        <div class="icon">
+            <img src="{% static 'todo_list/img/index/clipboard.png' %}" alt="Contact us.">
+        </div>
+        <h3>Criar sala</h3>
+        <span>Crie uma sala para divulgar tarefas e materiais.</span>
+        <a href="{% url 'create-room' %}">
+            <button class="b1">Abrir</button>
+        </a>            
+    </section>
+    {% endif %}
+    <section class="card shop">
+        <div class="icon">
+            <img src="{% static 'todo_list/img/index/video-call.png' %}" alt="Shop here.">
+        </div>
+        <h3>Ver salas</h3>
+        <span>Veja aqui as salas que você faz parte.</span>
+        <a href="{% url 'list-room' %}">
+            <button class="b2">Abrir</button>
+        </a>
+        
+    </section>
+    
+</main>
+
+{% endblock %}

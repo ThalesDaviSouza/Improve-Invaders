@@ -1,17 +1,62 @@
 {% extends 'todo_list/layout.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="icon" type="image/x-icon" href="{% static 'todo_list/img/index/blueTask.png' %}">
+<link rel="stylesheet" href="{% static 'todo_list/css/studentsClassTasks.css' %}">
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link
+    href="https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans:wght@700&display=swap"
+    rel="stylesheet" />
+<style>
+    * {
+        text-align: center;
+    }
+</style>
+{% endblock %}
 
 {% block body %}
-    <h1>Sala: {{sala}}</h1>
-    <p>ID: {{ sala.id }}</p>
-    {% for task in tasks %}
-        <a href="{% url 'view-task' task.id %}">{{task}}</a><br><br>
-    {% empty %}
-        <p>Sem atts</p>
-    {% endfor %}
+        <section class="card contact">
+            <div class="icon">
+                <img src="{% static 'todo_list/img/index/clipboard.png' %}" alt="Contact us.">
+            </div>
+            <h3>Tarefas de Sala: {{sala}}</h3>
+            {% if user == sala.professor %}
+            <p>ID: {{ sala.id }}</p>
+            {% endif %}
+            <span>Aqui serão adicionadas todas as tarefas enviadas pelo professor aos alunos.</span><br><br><br>
+            {% for task in tasks %}
+                <a href="{% url 'view-task' task.id %}">
+                    <button class="b1">{{task}}</button>r</button>
+                </a><br><br>            
+            {% empty %}
+                <p>Sem atts</p>
+            {% endfor %}
+            {% if user == sala.professor %}
+                <a href="{% url 'create-task' sala.id %}">
+                    <button class="b1">Adicionar tarefa</button>r</button>
+                </a><br><br>
+                <a id="deletar" data-url="{% url 'delete-room' sala.id %}">
+                    <button class="b1">Deletar a sala</button>r</button
+                </a>
+        
+            {% endif %}
+        </section>
 
-    {% if user == sala.professor %}
-        <a href="{% url 'create-task' sala.id %}">Criar att</a><br><br>
-        <a href="{% url 'delete-room' sala.id %}">Deletar sala</a>
+{% endblock %}
 
-    {% endif %}
+
+{% block script %}
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('#deletar').onclick = function(){
+                let confirmacao = confirm('Tem certeza que deseja deletar?')
+                if(confirmacao === true){
+                    window.location.replace(document.querySelector('#deletar').dataset.url)
+                }
+            }
+        })
+
+
+    </script>
 {% endblock %}

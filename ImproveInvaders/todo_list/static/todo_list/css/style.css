@@ -75,7 +75,7 @@ button{
     border: none;
     border-radius: 40px;
     cursor: pointer;
-    transition: all 0.3s ease 0s;
+    transition: all 0.3s;
 }
 
 button:hover {
@@ -138,7 +138,7 @@ section .sidenav{
   background: rgb(255, 255, 255, 0.17);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0);
   backdrop-filter: blur(5px);
-  transition: all 0.3s ease 0s;
+  transition: 0.3s;
   overflow: hidden;
 
   grid-area: "sidenav";
@@ -159,7 +159,7 @@ section .sidenav::before{
   background: rgb(168, 90, 247, 0.5);
   /* background: rgba(255, 255, 255, 0.4); */
   transform: skewX(45deg) translateX(500px);
-  transition: all 0.5s ease 0s;
+  transition: 0.5s;
 }
 
 section .sidenav:hover::before{
@@ -196,12 +196,12 @@ section .item{
   height: 38vh;
   color: white;
   text-align: center;
-  padding: 20px 30px;  
+  padding: 10px 30px;  
   border: 2px solid rgba(255, 255, 255, 0.3);
   background: rgb(255, 255, 255, 0.17);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0);
   backdrop-filter: blur(5px);
-  transition: all 0.3s ease 0s;
+  transition: 0.3s;
   overflow: hidden;
   
   grid-area: "item";
@@ -221,7 +221,7 @@ section .item::before{
   background: rgb(168, 90, 247, 0.5);
   /* background: rgba(255, 255, 255, 0.4); */
   transform: skewX(45deg) translateX(500px);
-  transition: all 0.5s ease 0s;
+  transition: 0.5s;
 }
 
 section .item:hover::before{
@@ -244,7 +244,7 @@ section .item:hover::before{
 
 .item p{
   background: transparent;
-  font-size: 15px;
+  font-size: 13px;
   margin: auto;
   max-width: 800px;
   font-family: 'Source Code Pro', monospace;

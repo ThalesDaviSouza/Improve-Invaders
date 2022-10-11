@@ -1,36 +1,60 @@
 {% extends 'todo_list/layout.html' %}
+{% load static%}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'todo_list/css/studentsClass.css' %}">
+{% endblock %}
 
 {% block body %}
     <h1>Salas</h1>
-    {{user}}<br>
     {% if user_type == "PROFESSOR" %}
         {% for sala in rooms %}
-            <a href="{% url 'view-room' sala.id %}">{{sala}}</a><br><br>
+        <main class="cards">
+            <section class="card contact">
+                <h3>{{sala}}</h3>
+                <span>{{sala.description}}</span>
+                <a href="{% url 'view-room' sala.id %}">
+                    <button class="b1">Entrar</button>
+                </a> 
+            </section>
+        </main><br><br><br><br>
         {% empty %}
-            <p>Sem salas no momento</p>
+        <p>Você ainda não tem nenhuma sala.</p>
+
         {% endfor %}
-
-        <a href="{% url 'create-room' %}">Criar mais salas</a>
-
     {% endif %}
+    
 
     {% if user_type == "ESTUDANTE" %}
-        <p>ESTUDANTE</p>
-        <p>Salas:</p>
         {% for sala in rooms %}
-
-            <a href="{% url 'view-room' sala.id %}">{{ sala }}</a><br><br>
-        
+        <main class="cards">
+            <section class="card contact">
+                <h3>{{sala}}</h3>
+                <span>{{sala.description}}</span>
+                <a href="{% url 'view-room' sala.id %}">
+                    <button class="b1">Entrar</button>
+                </a> 
+            </section>
+        </main><br><br><br><br>
         {% empty %}
-            <p>Você não está matriculado em nenhuma sala ainda.</p>
+
+
         {% endfor %}
-        
-        
-        <form action="{% url 'search-room' %}" method="POST">
-            {% csrf_token %}
-            <label>Entrar em uma sala:</label><br>
-            <input type="text" placeholder="Código da sala" name="room_id">
-            <input type="submit" value="Entrar na sala">
-        </form>
+
+        <main class="cards">
+            <section class="card contact">
+                <div class="icon">
+                    <img src="{% static 'todo_list/img/index/class.png' %}" alt="Contact us.">
+                </div>
+                <h3>Participe de uma sala</h3>
+                <span>Entre aqui e insira o código fornecido pelo seu professor para que você possa fazer parte da turma</span>
+                <form action="{% url 'search-room' %}" method="POST">
+                    {% csrf_token %}
+                    <label>Entrar em uma sala:</label><br>
+                    <input type="text" placeholder="Código da sala" name="room_id">
+                    <input class="enviar" type="submit" value="Entrar na sala">
+                </form>
+            </section>
+        </main>
     {% endif %}
 {% endblock %}

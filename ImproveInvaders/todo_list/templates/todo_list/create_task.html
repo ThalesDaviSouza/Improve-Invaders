@@ -1,13 +1,19 @@
 {% extends 'todo_list/layout.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'todo_list/css/teacherCreateClass.css' %}">
+{% endblock %}
 
 {% block body %}
-    <h1>Criar att</h1>
-    <form action="{% url 'create-task' sala.id %}" method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
+    <div class="row input-container">
+        <h1 class="title_contato">Criar Tarefa</h1>
+        <form action="{% url 'create-task' sala.id %}" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
 
-        <input type="submit" value="Criar tarefa">
-    </form>
-
+            <input class="enviar" type="submit" value="Criar tarefa">
+        </form>
+    </div>
 
 {% endblock %}

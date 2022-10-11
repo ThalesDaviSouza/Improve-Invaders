@@ -24,6 +24,21 @@ class SalaForm(ModelForm):
             'description': 'Descrição'
         }
 
+        widgets = {
+            'name':forms.TextInput(
+                attrs={
+                    'class':'icon icon-user-1',
+                    'placeholder':'Nome da sala'
+                }
+            ),
+            'description':forms.Textarea(
+                attrs={
+                    'class':'icon icon-comments',
+                    'placeholder':'Descrição da sala'
+                }
+            )
+        }
+
 
 class TaskForm(ModelForm):
     class Meta:
@@ -37,6 +52,18 @@ class TaskForm(ModelForm):
         }
 
         widgets = {
+            'name':forms.TextInput(
+                attrs={
+                    'class':'icon icon-user-1',
+                    'placeholder':'Nome da tarefa'
+                }
+            ),
+            'description':forms.Textarea(
+                attrs={
+                    'class':'icon icon-comments',
+                    'placeholder':'Descrição da tarefa'
+                }
+            ),
             'dataEntrega':forms.DateInput(
                 format=('%d-%m-%Y'),
                 attrs={
@@ -54,4 +81,14 @@ class StudentWorkForm(ModelForm):
 
         labels = {
             'content': 'Sua tarefa feita',
+        }
+
+        
+        widgets = {
+            'content':forms.Textarea(
+                attrs={
+                    'class':'icon icon-comments',
+                    'placeholder':'Sua atividade vai aqui...'
+                }
+            )
         }

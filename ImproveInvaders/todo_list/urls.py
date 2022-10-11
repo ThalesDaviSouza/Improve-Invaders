@@ -22,11 +22,12 @@ urlpatterns = [
     
     # Area do aluno
     path('search_room/', views.search_room, name='search-room'),
+    path('class_tasks/', views.class_tasks, name='class-tasks'),
     path('todo/', views.todo, name='todo'),
     path('send_task/<task_id>', views.send_task, name='send-task'),
 
-
+    # Shop
+    path('shop/', views.shop, name='shop'),
 
     # Oq tenho q acrescentar
-    # path('shop/'),
 ]

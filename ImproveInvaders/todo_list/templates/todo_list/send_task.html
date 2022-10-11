@@ -1,14 +1,38 @@
 {% extends 'todo_list/layout.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'todo_list/css/teacherCreateClass.css' %}">
+<style>
+    #info {
+        color: white;
+        margin: 20px;
+        text-align: center;
+        font-size: 1.3rem;
+    }
+    #send-task {
+        margin: 2% 20%;
+    }
+</style>
+{% endblock %}
 
 {% block body %}
-    <h1>{{ task }}</h1>
-    <p>{{ task.description }}</p>
-    <p>{{ task.dataEntrega|date:"j F, Y" }}</p>
+    <div id="send-task">
 
-    <form action="{% url 'send-task' task.id %}" method="POST">
-        {% csrf_token %}
-        {{ form.as_p}}
-        <input type="submit" value="Enviar tarefa">
-    </form>
+        <div id="info">
+            <h1>{{ task }}</h1>
+            <p>{{ task.description }}</p>
+            {% language 'pt-BR' %}
+            <p>{{ task.dataEntrega|date:"j F, Y" }}</p>
+            {% endlanguage %}
+        </div>
+        
+        <form action="{% url 'send-task' task.id %}" method="POST">
+            {% csrf_token %}
+            {{ form.as_p}}
+            <input class="enviar" type="submit" value="Enviar tarefa">
+        </form>
+    </div>
 
 {% endblock %}
