@@ -1,5 +1,5 @@
 # Improve-Invaders
-## Link de acesso: [Improve Invaders](https://improve-invaders.herokuapp.com)
+
 ### O que é o Improve Invaders?
 - O Improve Invaders é um site projetado por alguns alunos do ensino médio, da rede pública federal, com o objetivo de criar uma plataforma online a qual poderá ser utilizada em escolas, fazendo com que os alunos e professores tenham uma experiência mais divertida e eficiente. 
 
